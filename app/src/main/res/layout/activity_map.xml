@@ -1,0 +1,94 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/mainbg"
+    android:paddingRight="16dp"
+    android:paddingLeft="16dp"
+    android:paddingTop="16dp"
+    tools:context=".MainActivity">
+
+    <fragment
+        android:id="@+id/googleMap"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        class="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_above="@+id/fspace4" />
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="8dp"
+        android:id="@+id/fspace4"
+        android:layout_above="@+id/frame2"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@drawable/bottomframebg"
+        android:layout_gravity="center_horizontal"
+        android:padding="8dp"
+        android:layout_above="@+id/fspace5"
+        android:id="@+id/frame2">
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" FINISH &#10; ORDER "
+            android:id="@+id/button"
+            android:padding="8dp"
+            android:layout_gravity="right|center_vertical"
+            android:background="@drawable/buttonbg"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" LOCATE &#10; ME "
+            android:id="@+id/button1"
+            android:layout_gravity="left|center_vertical"
+            android:background="@drawable/buttonbg"
+            android:padding="8dp"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" SHOW &#10; OUTLETS "
+            android:id="@+id/button2"
+            android:layout_gravity="center"
+            android:background="@drawable/buttonbg"
+            android:padding="8dp"
+            android:textColor="#FFFFFF" />
+
+    </FrameLayout>
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="8dp"
+        android:id="@+id/fspace5"
+        android:layout_alignParentBottom="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="This map activity will show users' current location (implemented) and the delivery outlet locations (yet to be implemented)&#10;&#10;User will be able to click on outlet markers on map to select and hit finish."
+        android:id="@+id/textView10"
+        android:gravity="center_horizontal"
+        android:paddingTop="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <SeekBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/seekBar"
+        android:layout_alignParentTop="true"
+        android:layout_alignEnd="@+id/frame2"
+        android:layout_marginEnd="283dp"
+        android:layout_marginTop="152dp" />
+
+</RelativeLayout>

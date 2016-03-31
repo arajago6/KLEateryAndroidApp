@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:background="@drawable/newbg"
+        android:paddingRight="16dp"
+        android:paddingLeft="16dp"
+        android:paddingTop="16dp"
+        tools:context="edu.iit.arajago6hawk.krishnalunch.MainActivity">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:id="@+id/topFrame"
+            android:layout_alignParentStart="true">
+
+            <ImageView android:id="@+id/myimage1"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:src="@drawable/sl1"
+                android:layout_gravity="center" />" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="  Hello User!  "
+                android:textStyle="bold"
+                android:background="@drawable/buttonbg"
+                android:id="@+id/textView2.1"
+                android:padding="5dp"
+                android:layout_gravity="center_horizontal|bottom"
+                android:textColor="#ffffff"
+                android:singleLine="false" />
+
+        </FrameLayout>
+
+    <Space
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:id="@+id/fspace0.1"
+            android:layout_below="@+id/topFrame"/>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textStyle="bold|italic"
+            android:gravity="center_horizontal"
+            android:text="How about a hot delicious satiating lunch?"
+            android:id="@+id/textView"
+            android:layout_below="@+id/fspace0.1"/>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textStyle="bold|italic"
+            android:gravity="center_horizontal"
+            android:text="QUICK ORDER >"
+            android:id="@+id/textView0.1"
+            android:textColor="#000000"
+            android:clickable="true"
+            android:onClick="take_to_quickorder"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/textView"/>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textStyle="bold|italic"
+            android:gravity="center_horizontal"
+            android:text="VIEW ALL DELIVERY OUTLETS >"
+            android:id="@+id/textView0.2"
+            android:textColor="#000000"
+            android:layout_alignParentLeft="true"
+            android:clickable="true"
+            android:onClick="take_to_map"
+            android:layout_below="@+id/textView0.1"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:id="@+id/fspace"
+            android:layout_below="@id/textView0.2"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/topframebg"
+            android:layout_below="@id/fspace"
+            android:paddingTop="2dp"
+            android:id="@+id/frame1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Name"
+                android:id="@+id/textView3"
+                android:layout_gravity="left|bottom"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:textStyle="italic"
+                android:textColor="#00D0FF" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Cost"
+                android:id="@+id/textView4"
+                android:layout_gravity="right|bottom"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:textStyle="italic"
+                android:textColor="#00D0FF" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Menu"
+                android:textStyle="bold"
+                android:id="@+id/textView2"
+                android:layout_gravity="center_horizontal|top"
+                android:textColor="#ffffff"
+                android:singleLine="false" />
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg"
+            android:orientation="vertical"
+            android:layout_below="@+id/frame1"
+            android:layout_above="@+id/fspace4">
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="8dp"
+                android:id="@+id/fspace2"/>
+
+            <ListView
+                android:id="@+id/mobile_list"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:fadingEdge="none"
+                android:focusable="false"
+                android:scrollbars="none"
+                android:layout_above="@+id/fspace3"/>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="8dp"
+                android:id="@+id/fspace3"
+                android:layout_alignParentBottom="true"/>
+        </LinearLayout>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="8dp"
+            android:id="@+id/fspace4"
+            android:layout_above="@+id/frame2"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@drawable/bottomframebg"
+            android:layout_gravity="center_horizontal"
+            android:padding="8dp"
+            android:layout_above="@+id/fspace5"
+            android:id="@+id/frame2">
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" RESET &#10; ALL "
+                android:id="@+id/button"
+                android:padding="8dp"
+                android:layout_gravity="right|center_vertical"
+                android:background="@drawable/buttonbg"
+                android:textColor="#FFFFFF" />
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" PLACE &#10; ORDER "
+                android:id="@+id/button1"
+                android:layout_gravity="left|center_vertical"
+                android:background="@drawable/buttonbg"
+                android:padding="8dp"
+                android:textColor="#FFFFFF" />
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" ORDER &#10; HISTORY "
+                android:id="@+id/button2"
+                android:layout_gravity="center"
+                android:background="@drawable/buttonbg"
+                android:padding="8dp"
+                android:textColor="#FFFFFF" />
+
+        </FrameLayout>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="8dp"
+            android:id="@+id/fspace5"
+            android:layout_alignParentBottom="true"/>
+
+
+</RelativeLayout>

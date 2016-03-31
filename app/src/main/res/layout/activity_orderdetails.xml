@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:background="@drawable/mainbg"
+        android:paddingRight="16dp"
+        android:paddingLeft="16dp"
+        android:paddingTop="16dp"
+        tools:context="edu.iit.arajago6hawk.krishnalunch.OrderDetailsActivity">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textStyle="bold|italic"
+            android:gravity="center_horizontal"
+            android:text="- ORDER DETAILS -"
+            android:id="@+id/odtextView"
+            android:layout_alignParentStart="true"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:id="@+id/odfspace"
+            android:layout_below="@+id/odtextView"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/topframebg"
+            android:layout_below="@+id/odfspace"
+            android:paddingTop="2dp"
+            android:id="@+id/odframe1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Name"
+                android:id="@+id/odtextView3"
+                android:layout_gravity="left|bottom"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:textStyle="italic"
+                android:textColor="#00D0FF" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Cost &amp; Qty"
+                android:id="@+id/odtextView4"
+                android:layout_gravity="right|bottom"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:textStyle="italic"
+                android:textColor="#00D0FF" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Current Order"
+                android:textStyle="bold"
+                android:id="@+id/odtextView2"
+                android:layout_gravity="center_horizontal|top"
+                android:textColor="#ffffff"
+                android:singleLine="false" />
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg"
+            android:orientation="vertical"
+            android:layout_below="@+id/odframe1"
+            android:layout_above="@+id/odfspace4">
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="8dp"
+                android:id="@+id/odfspace2"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="This is your prospective order."
+                android:textStyle="bold"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:id="@+id/odtextView5"
+                android:gravity="center" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="16dp"
+                android:id="@+id/odfspace2.1"/>
+
+            <ListView
+                android:id="@+id/odmobile_list"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:fadingEdge="none"
+                android:focusable="false"
+                android:scrollbars="none"
+                android:layout_above="@+id/odfspace3"/>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="8dp"
+                android:id="@+id/odfspace3"
+                android:layout_alignParentBottom="true"/>
+        </LinearLayout>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="8dp"
+            android:id="@+id/odfspace4"
+            android:layout_above="@+id/odframe2"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@drawable/bottomframebg"
+            android:layout_gravity="center_horizontal"
+            android:padding="8dp"
+            android:layout_above="@+id/odfspace5"
+            android:id="@+id/odframe2">
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" CHECK &#10; OUT "
+                android:id="@+id/odbutton"
+                android:padding="8dp"
+                android:layout_gravity="right|center_vertical"
+                android:background="@drawable/buttonbg"
+                android:textColor="#FFFFFF" />
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" CONFIRM &#10; AND SHOP "
+                android:id="@+id/odbutton1"
+                android:layout_gravity="center"
+                android:background="@drawable/buttonbg"
+                android:padding="8dp"
+                android:textColor="#FFFFFF" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Cost: $0.0"
+                android:textStyle="bold"
+                android:id="@+id/textView6"
+                android:layout_gravity="left|center_vertical" />
+
+        </FrameLayout>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="8dp"
+            android:id="@+id/odfspace5"
+            android:layout_alignParentBottom="true"/>
+
+    </RelativeLayout>

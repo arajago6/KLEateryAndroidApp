@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:background="@drawable/mainbg"
+        android:paddingRight="16dp"
+        android:paddingLeft="16dp"
+        android:paddingTop="16dp"
+        tools:context="edu.iit.arajago6hawk.krishnalunch.OrderDetailsActivity">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textStyle="bold|italic"
+            android:gravity="center_horizontal"
+            android:text="- ORDER HISTORY -"
+            android:id="@+id/odtextView"
+            android:layout_alignParentStart="true"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:id="@+id/odfspace"
+            android:layout_below="@+id/odtextView"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/topframebg"
+            android:layout_below="@+id/odfspace"
+            android:paddingTop="2dp"
+            android:id="@+id/odframe1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Details"
+                android:id="@+id/odtextView4.1"
+                android:layout_gravity="center|bottom"
+                android:textStyle="italic"
+                android:textColor="#00D0FF" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Previous Orders"
+                android:textStyle="bold"
+                android:id="@+id/odtextView2"
+                android:layout_gravity="center_horizontal|top"
+                android:textColor="#ffffff"
+                android:singleLine="false" />
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg"
+            android:orientation="vertical"
+            android:layout_below="@+id/odframe1"
+            android:layout_above="@+id/odfspace4">
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="8dp"
+                android:id="@+id/odfspace2"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="There are no orders in your history now.&#10;Try placing one!"
+                android:textStyle="bold"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:id="@+id/ohtextView"
+                android:gravity="center" />
+
+            <ListView
+                android:id="@+id/ohmobile_list"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:fadingEdge="none"
+                android:focusable="false"
+                android:scrollbars="none"
+                android:layout_above="@+id/odfspace3"/>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="8dp"
+                android:id="@+id/odfspace3"
+                android:layout_alignParentBottom="true"/>
+        </LinearLayout>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="8dp"
+            android:id="@+id/odfspace4"
+            android:layout_above="@+id/ohbutton"/>
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" RESET &#10; ALL HISTORY "
+            android:id="@+id/ohbutton"
+            android:layout_above="@+id/odfspace5"
+            android:gravity="center"
+            android:background="@drawable/buttonbg"
+            android:padding="8dp"
+            android:textColor="#FFFFFF" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="8dp"
+            android:id="@+id/odfspace5"
+            android:layout_alignParentBottom="true"/>
+
+    </RelativeLayout>
