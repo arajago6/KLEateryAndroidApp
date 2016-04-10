@@ -2,13 +2,11 @@ package edu.iit.arajago6hawk.krishnalunch;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
-import android.location.Criteria;
-import android.location.Location;
-import android.location.LocationManager;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +18,20 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import edu.iit.arajago6hawk.krishnalunch.GDriveServices.GDriveDataLoader;
+import edu.iit.arajago6hawk.krishnalunch.GDriveServices.UserService;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -93,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(getBaseContext(), OrderHistoryActivity.class);
 
                 startActivity(intent);
-                }
+            }
         });
 
         lv.setAdapter(custAdapter);
@@ -337,6 +348,83 @@ public class MainActivity extends AppCompatActivity {
         sr5.setBriefDes("Ingredients are condensed milk, milkmaid and sugar");
         results.add(sr5);
 
+        //DailyMenuUpdater updater = new DailyMenuUpdater();
+        //updater.execute();
+
         return results;
+    }
+
+    private class DailyMenuUpdater extends AsyncTask<Void, Void, Void > {
+        private String[] daysOfWeek = {"monday", "tuesday", "wednesday", "thursday", "friday"};
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            try {
+                URL url = new URL("http://www.iskconchicago.com/krishna-lunch/");
+                URLConnection connection = url.openConnection();
+                HttpURLConnection httpConnection = (HttpURLConnection) connection;
+
+                if(httpConnection.getResponseCode() == HttpURLConnection.HTTP_OK){
+                    // start pulling the page
+                    InputStream in = httpConnection.getInputStream();
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+                    DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+                    DocumentBuilder db = dbf.newDocumentBuilder();
+
+                    // the page is extremely malformed, need to filter out stuff
+                    StringBuilder builder = new StringBuilder();
+                    String line;
+                    while((line = reader.readLine()) != null) {
+                        builder.append(line);
+                    }
+                    String page = builder.toString();
+                    // take off all tags except for div, br, h2
+                    page = page.substring(page.indexOf("<div id=\"g1-section-1\""), page.lastIndexOf("<span id=\"g1-space-1\""))
+                                        .replaceAll("<(?!/?div)(?!br/?)(?!/?h2)[^>]*>", "")
+                                        .replaceAll("<[^>]*>", "\n")
+                                        .replaceAll("&nbsp;", " ");
+                    String [] contentList = page.split("(\n)+");
+
+                    results.clear();
+
+                    for(int i = 0 ; i < contentList.length;){
+                        String content = contentList[i].trim();
+                        if(content != null && content != ""){
+                            if(isDayOfWeek(content)){
+                                CustomItemCollection item = new CustomItemCollection();
+                                item.setName(content);
+                                StringBuilder sb = new StringBuilder();
+                                for(++i; i < contentList.length; i++){
+                                    if(isDayOfWeek(contentList[i])) break;
+                                    sb.append(contentList[i] + "\n");
+                                }
+                                item.setBriefDes(sb.toString());
+                                results.add(item);
+                                Log.d("parser2", sb.toString());
+                            }else{
+                                i++;
+                            }
+                        }else{
+                            i++;
+                        }
+                    }
+
+                    custAdapter.notifyDataSetChanged();
+                }
+            }catch(Exception e) {
+                Log.d("parser", e.getMessage());
+            }
+            return null;
+        }
+
+        private boolean isDayOfWeek(String value){
+            for(String day : daysOfWeek){
+                if(value.toLowerCase().equals(day)){
+                    return true;
+                }
+            }
+
+            return false;
+        }
     }
 }
