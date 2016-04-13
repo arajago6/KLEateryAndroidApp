@@ -8,7 +8,7 @@ import com.google.gdata.data.spreadsheet.WorksheetEntry;
 /**
  * Created by dkwon on 4/7/2016.
  */
-public class UserService extends GDriveDataLoader{
+public class UserService extends GSpreadsheetService {
     private static final String USER_TABLE = "Users";
     private static final String EMAIL_COLUMN = "email";
     private static final String USER_ID_COLUMN = "userId";

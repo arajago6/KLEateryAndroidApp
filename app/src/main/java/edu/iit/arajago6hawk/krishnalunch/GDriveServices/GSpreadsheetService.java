@@ -2,7 +2,6 @@ package edu.iit.arajago6hawk.krishnalunch.GDriveServices;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.provider.ContactsContract;
 import android.util.Log;
 
 import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
@@ -12,7 +11,6 @@ import com.google.api.client.util.IOUtils;
 import com.google.gdata.client.spreadsheet.*;
 import com.google.gdata.data.BaseFeed;
 import com.google.gdata.data.IEntry;
-import com.google.gdata.data.IFeed;
 import com.google.gdata.data.spreadsheet.ListEntry;
 import com.google.gdata.data.spreadsheet.SpreadsheetEntry;
 import com.google.gdata.data.spreadsheet.SpreadsheetFeed;
@@ -28,9 +26,9 @@ import java.util.List;
 /**
  * Created by dkwon on 4/6/2016.
  */
-public abstract class GDriveDataLoader {
+public abstract class GSpreadsheetService {
 
-    private static GDriveDataLoader _instance = null;
+    private static GSpreadsheetService _instance = null;
     private static final String SERVICE_ACCOUNT = "dbmanager@kleatery.iam.gserviceaccount.com";
     private static final String KEY_PASSWORD = "notasecret";
     private static final String KEY_FILE = "KLEatery.p12";
@@ -51,7 +49,7 @@ public abstract class GDriveDataLoader {
                     return entry;
             }
         }catch (Exception e){
-            Log.e("GDriveDataLoader", e.getMessage());
+            Log.e("GSpreadsheetService", e.getMessage());
         }
 
         return null;
@@ -77,7 +75,7 @@ public abstract class GDriveDataLoader {
                 List<SpreadsheetEntry> spreadsheets = feed.getEntries();
 
                 if (spreadsheets.size() == 0) {
-                    Log.e("GDriveDataLoader", "No spreadsheet found");
+                    Log.e("GSpreadsheetService", "No spreadsheet found");
                     return;
                 }
 
@@ -89,7 +87,7 @@ public abstract class GDriveDataLoader {
                     }
                 }
             } catch (Exception e) {
-                Log.e("GDriveDataLoader", e.getMessage());
+                Log.e("GSpreadsheetService", e.getMessage());
             }
         }
     }
@@ -99,7 +97,7 @@ public abstract class GDriveDataLoader {
             GetFeedTaskParams param = new GetFeedTaskParams(pClass, url);
             return new GetFeedTask().execute(param).get();
         }catch (Exception e){
-            Log.e("GDriveDataLoader", e.getMessage());
+            Log.e("GSpreadsheetService", e.getMessage());
         }
 
         return null;
@@ -110,7 +108,7 @@ public abstract class GDriveDataLoader {
             InsertFeedTaskParams param = new InsertFeedTaskParams(entry, url);
             new InsertFeedTask().execute(param).get();
         }catch(Exception e){
-            Log.e("GDriveDataLoader", e.getMessage());
+            Log.e("GSpreadsheetService", e.getMessage());
         }
     }
 
@@ -118,7 +116,7 @@ public abstract class GDriveDataLoader {
         try{
             new UpdateListEntryTask().execute(entry).get();
         }catch (Exception e){
-            Log.e("GDriveDataLoader", e.getMessage());
+            Log.e("GSpreadsheetService", e.getMessage());
         }
     }
 

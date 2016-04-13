@@ -9,7 +9,7 @@ import com.google.gdata.data.spreadsheet.WorksheetEntry;
 /**
  * Created by dkwon on 4/7/2016.
  */
-public class OrderService extends GDriveDataLoader{
+public class OrderService extends GSpreadsheetService {
     private static final String ORDER_TABLE = "Orders";
     private static final String ORDER_ID_COLUMN = "orderId";
     private static final String USER_ID_COLUMN = "userId";
